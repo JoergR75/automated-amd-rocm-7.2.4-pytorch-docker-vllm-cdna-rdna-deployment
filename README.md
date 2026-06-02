@@ -102,7 +102,7 @@ bash script_module_ROCm_724_Ubuntu_22.04-24.04_pytorch_server.sh
 ```
 **⚠️ Note**: Entering the user password may be required.
 
-<img width="1584" height="594" alt="image" src="https://github.com/user-attachments/assets/4c8080d1-fde5-4f0f-9d08-848f724d7a7f" />
+<img width="1611" height="820" alt="image" src="https://github.com/user-attachments/assets/25104596-1e53-4701-ba7f-7040ed4ffc10" />
 
 The installation takes ~15 minutes depending on internet speed and hardware performance.
 
