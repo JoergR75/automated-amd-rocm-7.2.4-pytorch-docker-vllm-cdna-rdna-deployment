@@ -11,9 +11,9 @@
 ## 📌 Overview
 The script provisions a fully automated, non-interactive AMD GPU software development environment for AI and HPC software engineering on **Ubuntu 22.04** and **24.04**, centered on **ROCm 7.2.3** and **PyTorch** Stable.
 
-At the platform layer, it installs the AMD GPU kernel driver (**amdgpu-dkms**) and the ROCm 7.2.3 runtime, including **HIP** and **OpenCL 2.x**, ensuring compatibility across **CDNA1**, **CDNA2**, **CDNA3** **CDNA4**, **RDNA3**, **RDNA4** GPUs and **Strix APUs**. The script configures **OpenCL ICD** paths, user group permissions (video, render, sudo), and kernel headers required for compiling GPU-accelerated native extensions.
+At the platform layer, it installs the AMD GPU kernel driver (**amdgpu-dkms**) and the ROCm 7.2.4 runtime, including **HIP** and **OpenCL 2.x**, ensuring compatibility across **CDNA1**, **CDNA2**, **CDNA3** **CDNA4**, **RDNA3**, **RDNA4** GPUs and **Strix APUs**. The script configures **OpenCL ICD** paths, user group permissions (video, render, sudo), and kernel headers required for compiling GPU-accelerated native extensions.
 
-For the AI framework layer, the script installs **PyTorch 2.11 Stable** (**ROCm 7.2.3 wheels**) directly from the official PyTorch ROCm nightly repository, enabling access to the latest HIP backends, kernel fusion paths, and compiler features. It complements PyTorch with Transformers, Accelerate, Diffusers, Datasets, SentencePiece, and supporting Python build tooling, allowing immediate development, testing, and profiling of modern LLM, diffusion, and data-parallel workloads.
+For the AI framework layer, the script installs **PyTorch 2.12 Stable** (**ROCm 7.2.4 wheels**) directly from the official PyTorch ROCm nightly repository, enabling access to the latest HIP backends, kernel fusion paths, and compiler features. It complements PyTorch with Transformers, Accelerate, Diffusers, Datasets, SentencePiece, and supporting Python build tooling, allowing immediate development, testing, and profiling of modern LLM, diffusion, and data-parallel workloads.
 
 The developer toolchain is rounded out with C/C++ build and system utilities required for low-level GPU software engineering and extension development, including **cmake**, **libstdc++ dev headers**, **git** / **git-lfs**, **libmsgpack**, and **rocm-bandwidth-test** for validating PCIe and HBM bandwidth. Runtime observability and system inspection are supported via htop, ncdu, and ROCm diagnostics (rocminfo, rocm-smi, amd-smi).
 
@@ -32,7 +32,7 @@ If an existing ROCm installation is detected, it removes ROCm and related packag
 | **Kernels** tested       | 5.15.0-171 (22.04.5) • 6.8.0-110 (24.04.4)                       |
 | **GPUs**          | AMD **CDNA1** • **CDNA2** • **CDNA3** • **CDNA4** • **RDNA3** • **RDNA4**              |
 | **APUs**        | AMD **Strix** • **Strix Halo**                                       |
-| **ROCm**          | 7.2.3                                                |
+| **ROCm**          | 7.2.4                                                |
 | **PyTorch**       | torch 2.11.0+rocm7.2, torchvision 0.26.0+rocm7.2       |       |
 
 **⚠️ Note**: **Ubuntu 20.04.x (Focal Fossa)** is **not supported**. The last compatible ROCm version for 20.04 is **6.4.0**.
@@ -67,6 +67,27 @@ Install **Ubuntu 22.04.5 LTS** or **Ubuntu 24.04.4 LTS** (Server or Desktop vers
 - SBIOS settings:
   - When using Linux, you should disable Secure Boot
   - On WRX80 and WRX90 motherboard solutions, make sure SR-IOV is enabled — there are known issues with Ubuntu Linux detecting the network otherwise
+
+- Ubuntu 22.04.5:
+  
+  During installation, it may be required to add `nomodeset` to the GRUB boot parameters to prevent boot hangs.
+
+  In the GRUB menu (for example, at **"Try or Install Ubuntu Server"**):
+  - Highlight the installation entry
+  - Press **`e`** to edit the boot parameters
+  - Locate the line beginning with:
+
+     ```bash
+     linux /casper/vmlinuz
+     ```
+
+  - Add `quiet splash nomodeset` before the final `---`:
+
+     ```bash
+     linux /casper/vmlinuz quiet splash nomodeset ---
+     ```
+
+  - Press **Ctrl + X** or **F10** to boot with the updated parameters
 
 ### 2️⃣ **Download the Script from the Repository**
 ```bash
