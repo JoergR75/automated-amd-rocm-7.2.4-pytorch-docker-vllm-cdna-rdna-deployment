@@ -132,8 +132,9 @@ Example usage:
 python3 test.py
 ```
 Expected Output Example:
-
-<img width="961" height="724" alt="image" src="https://github.com/user-attachments/assets/d9298215-a312-44b6-9939-d9cc08108d44" />
+| Ubuntu 24.04.04 LTS | Ubuntu 22.04.5 LTS |
+|--------|--------|
+| ![](https://github.com/user-attachments/assets/d9298215-a312-44b6-9939-d9cc08108d44) | ![](https://github.com/user-attachments/assets/15ab9413-c196-49f8-90b4-1a076fdafe1e) |
 
 More details about the ROCm driver version can be reviewed:
 ```bash
