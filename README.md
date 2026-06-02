@@ -252,7 +252,7 @@ sudo docker run -it \
     vllm/vllm-openai-rocm:v0.22.0
 ```
 
-<img width="618" height="124" alt="image" src="https://github.com/user-attachments/assets/fa7e620f-d082-4c0e-802b-a3be7f9fbab7" />
+<img width="1386" height="253" alt="image" src="https://github.com/user-attachments/assets/b69cf9c7-3ce0-47fa-b604-50d9a386a51c" />
 
 With `rocm-smi`, you can verify all available GPUs (in this case, 2× Radeon AI PRO R9700 GPUs).
 
