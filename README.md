@@ -81,10 +81,10 @@ Install **Ubuntu 22.04.5 LTS** or **Ubuntu 24.04.4 LTS** (Server or Desktop vers
      linux /casper/vmlinuz
      ```
 
-  - Add `quiet splash nomodeset` before the final `---`:
+  - Add `nomodeset` before the final `---`:
 
      ```bash
-     linux /casper/vmlinuz quiet splash nomodeset ---
+     linux /casper/vmlinuz nomodeset ---
      ```
 
   - Press **Ctrl + X** or **F10** to boot with the updated parameters
