@@ -94,7 +94,7 @@ Install **Ubuntu 22.04.5 LTS** or **Ubuntu 24.04.4 LTS** (Server or Desktop vers
 wget https://raw.githubusercontent.com/JoergR75/automated-amd-rocm-7.2.4-pytorch-docker-vllm-cdna-rdna-deployment/refs/heads/main/script_module_ROCm_724_Ubuntu_22.04-24.04_pytorch_server.sh
 ```
 
-<img width="2510" height="479" alt="image" src="https://github.com/user-attachments/assets/880a50ff-9f81-47b4-80d2-2d8e35156a4f" />
+<img width="2490" height="473" alt="image" src="https://github.com/user-attachments/assets/3fabb496-d611-4857-b960-57b9c4f1502f" />
 
 ### 3️⃣ **Run the Installer**
 ```bash
