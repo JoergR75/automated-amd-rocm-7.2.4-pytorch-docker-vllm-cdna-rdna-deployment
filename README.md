@@ -278,6 +278,7 @@ sudo docker run -it \
     --device=/dev/dri/renderD129 \
     --security-opt seccomp=unconfined \
     --group-add video \
+    --entrypoint /bin/bash \
     vllm/vllm-openai-rocm:v0.22.0
 ```
 GPU2 has been added to the container
