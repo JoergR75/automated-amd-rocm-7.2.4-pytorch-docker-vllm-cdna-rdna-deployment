@@ -133,14 +133,14 @@ python3 test.py
 ```
 Expected Output Example:
 
-<img width="1235" height="719" alt="image" src="https://github.com/user-attachments/assets/683618e4-cf06-44a0-928c-2b9f2ef4241f" />
+<img width="961" height="724" alt="image" src="https://github.com/user-attachments/assets/d9298215-a312-44b6-9939-d9cc08108d44" />
 
 More details about the ROCm driver version can be reviewed:
 ```bash
 apt show rocm-libs -a
 ```
 
-<img width="2508" height="717" alt="image" src="https://github.com/user-attachments/assets/6ade4a74-deea-4c4e-932d-b3e82bdc8d10" />
+<img width="2487" height="720" alt="image" src="https://github.com/user-attachments/assets/0a52985f-5348-41cd-8e6f-7430fd3acd2e" />
 
 ## 📶 ROCm Bandwidth Test
 
