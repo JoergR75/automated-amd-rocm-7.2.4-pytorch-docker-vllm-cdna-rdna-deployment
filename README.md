@@ -4,7 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.12.0%20%28Stable%29-ee4c2c?logo=pytorch)](https://pytorch.org/get-started/locally/)
 [![Docker](https://img.shields.io/badge/Docker-29.5.x-blue?logo=docker)](https://www.docker.com/)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04-e95420?logo=ubuntu)](https://ubuntu.com/download/server)
-[![AMD Radeon AI PRO R9000 Series](https://img.shields.io/badge/AMD-RDNA4%20Radeon(TM)%20AI%20PRO%20R9700-8B0000?logo=amd)](https://www.amd.com/en/products/graphics/workstations.html)
+[![AMD Radeon AI PRO R9000 Series](https://img.shields.io/badge/AMD-RDNA4%20Radeon(TM)%20AI%20PRO%20R9000%20Series-8B0000?logo=amd)](https://www.amd.com/en/products/graphics/workstations.html)
 [![AMD Ryzen AI](https://img.shields.io/badge/AMD-Ryzen%20AI%20-8B0000?logo=amd)](https://ryzen-ai.com/en/)
 [![AMD CDNA MI300 Series](https://img.shields.io/badge/AMD-CDNA%20Instint(TM)%20Architecture-8B0000?logo=amd)](https://www.amd.com/en/technologies/cdna.html)
 
