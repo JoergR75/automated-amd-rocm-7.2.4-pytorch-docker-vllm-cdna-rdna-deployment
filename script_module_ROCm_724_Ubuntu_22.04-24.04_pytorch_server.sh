@@ -19,7 +19,7 @@ exec > >(tee -a "$LOGFILE") 2>&1
 #
 # Kernel Versions Tested:
 #   - Ubuntu 22.04.5: 5.15.0-176
-#   - Ubuntu 24.04.4: 6.8.0-114
+#   - Ubuntu 24.04.4: 6.8.0-124
 #
 # Supported Hardware:
 #   - AMD CDNA1 | CDNA2 | CDNA3 | CDNA4 | RDNA3 | RDNA4 | Strix APU
