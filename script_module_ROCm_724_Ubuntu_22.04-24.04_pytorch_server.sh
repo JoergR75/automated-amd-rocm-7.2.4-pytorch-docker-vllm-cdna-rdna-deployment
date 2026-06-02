@@ -32,7 +32,7 @@ exec > >(tee -a "$LOGFILE") 2>&1
 #
 # PyTorch:               2.11+rocm7.2
 # Transformers:          5.9.0
-# Docker:                29.5.2 min. 29.4.0 (the script will verify and skip installation if minimum requirements are installed)
+# Docker:                29.5.2 min. 29.5.0 (the script will verify and skip installation if minimum requirements are installed)
 #
 # INCLUDED TOOLS:
 # ---------------------------------------------------------------------------------------------------------------
