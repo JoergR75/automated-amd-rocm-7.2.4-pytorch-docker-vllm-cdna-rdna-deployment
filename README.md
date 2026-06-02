@@ -1,4 +1,4 @@
-# ⚙️ Automated AMD AI ROCm 7.2.4 Stack + OpenCL 2.x + PyTorch + Transformers + Docker + optional vLLM Setup
+# ⚙️ Automated AMD AI ROCm 7.2.4 Stack + OpenCL + PyTorch + Transformers + Docker + optional vLLM Setup
 
 [![ROCm](https://img.shields.io/badge/ROCm-7.2.3-ff6b6b?logo=amd)](https://rocm.docs.amd.com/en/docs-7.2.3/about/release-notes.html)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.11.0%20%28Stable%29-ee4c2c?logo=pytorch)](https://pytorch.org/get-started/locally/)
