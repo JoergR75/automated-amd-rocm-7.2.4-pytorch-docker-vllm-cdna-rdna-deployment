@@ -17,7 +17,7 @@ exec > >(tee -a "$LOGFILE") 2>&1
 #   - Ubuntu 22.04.5 LTS (Jammy Jellyfish)
 #   - Ubuntu 24.04.4 LTS (Noble Numbat)
 #
-# Kernel Versions Tested:
+# Kernel Versions Tested (LTS server):
 #   - Ubuntu 22.04.5: 5.15.0-179
 #   - Ubuntu 24.04.4: 6.8.0-124
 #
