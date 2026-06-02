@@ -1,4 +1,6 @@
 #!/bin/bash
+LOGFILE="$HOME/rocm724_installation.log"
+exec > >(tee -a "$LOGFILE") 2>&1
 # ================================================================================================================
 # ROCm 7.2.4 stack + OpenCL 2.x + PyTorch 2.12 (Stable) + Transformers + Docker Setup
 # Compatible with Ubuntu 22.04.x and 24.04.x (Desktop & Server) — Ubuntu 20.04.x is no longer supported
@@ -50,6 +52,7 @@
 # ================================================================================================================
 
 # global stdout method
+set -euo pipefail
 function print () {
     printf "\033[1;32m\t$1\033[1;35m\n"; sleep 4
 }
