@@ -226,9 +226,9 @@ To use vLLM optimized for RDNA4 and CDNA:
 
 Use the container image you need.
 
-**RDNA4** architecture running on Ubuntu 24.04
+**RDNA4** architecture running on Ubuntu 22.04
 ```bash
-docker pull vllm/vllm-openai-rocm:v0.20.1
+docker pull vllm/vllm-openai-rocm:v0.22.0
 ```
 
 <img width="763" height="590" alt="image" src="https://github.com/user-attachments/assets/7e13abbb-73c4-4d95-9204-2f240837c625" />
@@ -249,7 +249,7 @@ sudo docker run -it \
     --security-opt seccomp=unconfined \
     --group-add video \
     --entrypoint /bin/bash \
-    vllm/vllm-openai-rocm:v0.20.1
+    vllm/vllm-openai-rocm:v0.22.0
 ```
 
 <img width="618" height="124" alt="image" src="https://github.com/user-attachments/assets/fa7e620f-d082-4c0e-802b-a3be7f9fbab7" />
@@ -278,7 +278,7 @@ sudo docker run -it \
     --device=/dev/dri/renderD129 \
     --security-opt seccomp=unconfined \
     --group-add video \
-    vllm/vllm-openai-rocm:v0.20.1
+    vllm/vllm-openai-rocm:v0.22.0
 ```
 GPU2 has been added to the container
 
