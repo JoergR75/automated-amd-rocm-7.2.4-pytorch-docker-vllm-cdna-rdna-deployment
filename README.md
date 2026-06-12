@@ -134,7 +134,7 @@ python3 test.py
 Expected Output Example:
 | Ubuntu 24.04.04 LTS | Ubuntu 22.04.5 LTS |
 |--------|--------|
-| ![](https://github.com/user-attachments/assets/d9298215-a312-44b6-9939-d9cc08108d44) | ![](https://github.com/user-attachments/assets/15ab9413-c196-49f8-90b4-1a076fdafe1e) |
+| ![](https://github.com/user-attachments/assets/d9298215-a312-44b6-9939-d9cc08108d44) | ![](https://github.com/user-attachments/assets/59151c0e-7f55-4ec6-bd36-27341a100631) |
 
 More details about the ROCm driver version can be reviewed:
 ```bash
