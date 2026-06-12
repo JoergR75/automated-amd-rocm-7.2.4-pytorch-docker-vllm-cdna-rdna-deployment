@@ -310,6 +310,7 @@ import torch
 import subprocess
 import platform
 import transformers
+# import vllm
 import re
 import os
 
@@ -345,6 +346,7 @@ print("\n ✅ PyTorch version:", torch.__version__)
 print(" 🧪 ROCm version:", subprocess.getoutput("/opt/rocm/bin/hipconfig --version"))
 print(" ✅ Is ROCm available:", torch.version.hip is not None)
 print(" 🤗 Transformers version:", transformers.__version__)
+# print(" 🧠 vLLM version:", vllm.__version__)
 print("\n ⚡ Number of GPUs:", torch.cuda.device_count())
 
 if torch.cuda.device_count() > 0:
