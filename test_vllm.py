@@ -134,7 +134,7 @@ if torch.cuda.is_available():
         b = torch.rand(3, 3, device=device)
         c = a + b
 
-        print(f"\n✅ Tensor operation successful on GPU {gpu_id}")
+        print(f"\n ✅ Tensor operation successful on GPU {gpu_id}")
         print(f"   Device: {torch.cuda.get_device_name(gpu_id)}")
         print(c)
 
