@@ -30,8 +30,8 @@ exec > >(tee -a "$LOGFILE") 2>&1
 # ROCm Release Notes:    https://rocm.docs.amd.com/en/docs-7.2.4/about/release-notes.html
 # ROCm Driver Repo:      https://repo.radeon.com/amdgpu-install/7.2.4/ubuntu/
 #
-# PyTorch:               2.11+rocm7.2
-# Transformers:          5.10.2
+# PyTorch:               2.12+rocm7.2
+# Transformers:          5.12
 # Docker:                29.5.2 min. 29.5.0 (the script will verify and skip installation if minimum requirements are installed)
 #
 # INCLUDED TOOLS:
@@ -48,11 +48,10 @@ exec > >(tee -a "$LOGFILE") 2>&1
 # ---------------------------------------------------------------------------------------------------------------
 # Author:                Joerg Roskowetz
 # Estimated Runtime:     ~15 minutes (depending on system performance and internet speed)
-# Last Updated:          June 12th, 2026
+# Last Updated:          June 15th, 2026
 # ================================================================================================================
 
 # global stdout method
-set -euo pipefail
 function print () {
     printf "\033[1;32m\t$1\033[1;35m\n"; sleep 4
 }
@@ -499,11 +498,18 @@ printf "\nThe container will run using the image 'rocm/vllm-dev:rocm7.2.1_navi_u
 
 # reboot option
 print ' 🔄 Reboot system now (recommended)? (y/n)'
-read q
-if [ $q == "y" ]; then
-    for i in 3 2 1
-    do
-        printf "🔄 Reboot in $i ...\r"; sleep 1
-    done
-    sudo reboot
-fi
+
+read -r q
+case "${q:-}" in
+    y|Y|yes|YES)
+        for i in 3 2 1
+        do
+            printf "🔄 Reboot in $i ...\r"
+            sleep 1
+        done
+        sudo reboot
+        ;;
+    *)
+        echo "Skipping reboot."
+        ;;
+esac
