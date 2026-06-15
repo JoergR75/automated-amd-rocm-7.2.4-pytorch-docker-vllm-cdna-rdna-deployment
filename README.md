@@ -262,6 +262,10 @@ or `amd-smi`
 
 <img width="1650" height="687" alt="image" src="https://github.com/user-attachments/assets/664edd2c-77cd-408f-a35a-048347a0c3bf" />
 
+Download `test_vllm.py`
+```bash
+wget
+```
 running `test_vllm.py`
 
 <img width="1051" height="753" alt="image" src="https://github.com/user-attachments/assets/7030c74e-c4d8-437b-8bd9-2865a7b6d173" />
