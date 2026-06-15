@@ -92,7 +92,7 @@ pcie_infos = get_all_gpu_pcie_info()
 if torch.cuda.device_count() > 0:
     for gpu_id in range(torch.cuda.device_count()):
 
-        print(f"\n⚡ GPU {gpu_id} Name: {torch.cuda.get_device_name(gpu_id)}")
+        print(f"\n ⚡ GPU {gpu_id} Name: {torch.cuda.get_device_name(gpu_id)}")
 
         free_mem, total_mem = torch.cuda.mem_get_info(gpu_id)
 
