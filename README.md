@@ -264,9 +264,13 @@ or `amd-smi`
 
 Download `test_vllm.py`
 ```bash
-wget
+wget https://raw.githubusercontent.com/JoergR75/automated-amd-rocm-7.2.4-pytorch-docker-vllm-cdna-rdna-deployment/refs/heads/main/test_vllm.py
 ```
+
 running `test_vllm.py`
+```bash
+python3 test_vllm.py
+```
 
 <img width="1051" height="753" alt="image" src="https://github.com/user-attachments/assets/7030c74e-c4d8-437b-8bd9-2865a7b6d173" />
 
