@@ -280,7 +280,7 @@ First, verify the available GPUs in the `/dev/dri` directory (host).
 cd /dev/dri && ls
 ```
 
-<img width="460" height="49" alt="image" src="https://github.com/user-attachments/assets/84b7c3b5-5a54-4132-8d87-9a16ad9ef337" />
+<img width="1227" height="100" alt="image" src="https://github.com/user-attachments/assets/dfb844c0-12d4-4707-a9ab-eb0e301d2e76" />
 
 Let's choose **GPU2**, also referred to as **"card2"** or **"renderD129"**.
 ```bash
