@@ -164,7 +164,7 @@ install_jammy() {
     python3 -m pip install --upgrade accelerate --quiet --no-input
     python3 -m pip install -U diffusers --quiet --no-input
     python3 -m pip install protobuf --quiet --no-input
-    python3 -m pip install sentencepiece --quiet --no-input 
+    python3 -m pip install sentencepiece --quiet --no-input
     python3 -m pip install datasets --quiet --no-input
 }
 
