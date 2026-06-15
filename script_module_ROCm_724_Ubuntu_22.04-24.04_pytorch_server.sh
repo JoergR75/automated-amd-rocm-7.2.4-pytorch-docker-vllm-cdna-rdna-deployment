@@ -503,15 +503,15 @@ printf "  python3 test.py\n"
 
 # vLLM Docker images for RDNA4 and CDNA1/2/3/4
 printf "\n 🔹 Install the latest vLLM Docker images:\n"
-printf "  RDNA4 → sudo docker pull rocm/vllm-dev:rocm7.2.1_navi_ubuntu24.04_py3.12_pytorch_2.9_vllm_0.16.0\n"
+printf "  RDNA4 → sudo docker pull vllm/vllm-openai-rocm:v0.22.0\n"
 printf "  CDNA → sudo docker pull rocm/vllm:latest\n"
 
 # Run the Docker container
 printf "\n 🔹 Start the vLLM Docker container:\n"
 printf "  sudo docker run -it --device=/dev/kfd --device=/dev/dri \\
-    --security-opt seccomp=unconfined --group-add video rocm/vllm-dev:rocm7.2.1_navi_ubuntu24.04_py3.12_pytorch_2.9_vllm_0.16.0\n"
+    --security-opt seccomp=unconfined --group-add video vllm/vllm-openai-rocm:v0.22.0\n"
 
-printf "\nThe container will run using the image 'rocm/vllm-dev:rocm7.2.1_navi_ubuntu24.04_py3.12_pytorch_2.9_vllm_0.16.0', with flags enabling AMD GPU access via ROCm.\n\n"
+printf "\nThe container will run using the image 'vllm/vllm-openai-rocm:v0.22.0', with flags enabling AMD GPU access via ROCm.\n\n"
 
 # reboot option
 print ' 🔄 Reboot system now (recommended)? (y/n)'
