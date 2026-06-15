@@ -12,6 +12,39 @@ import os
 ubuntu_pretty = subprocess.getoutput("lsb_release -ds")
 ubuntu_version = platform.release()
 
+# function for PCIe settings
+def get_gpu_pcie_info():
+    try:
+        gpu_bdf = subprocess.check_output(
+            "lspci -D | egrep 'VGA|3D|Display' | head -1 | awk '{print $1}'",
+            shell=True,
+            text=True
+        ).strip()
+
+        sysfs = f"/sys/bus/pci/devices/{gpu_bdf}"
+
+        with open(f"{sysfs}/current_link_width") as f:
+            current_width = f.read().strip()
+
+        with open(f"{sysfs}/max_link_width") as f:
+            max_width = f.read().strip()
+
+        with open(f"{sysfs}/current_link_speed") as f:
+            current_speed = f.read().strip()
+
+        with open(f"{sysfs}/max_link_speed") as f:
+            max_speed = f.read().strip()
+
+        return {
+            "current_width": current_width,
+            "max_width": max_width,
+            "current_speed": current_speed,
+            "max_speed": max_speed
+        }
+
+    except Exception as e:
+        return f"Error getting PCIe info: {e}"
+
 print("\n 🐧 Ubuntu:", ubuntu_pretty)
 print(" 🔢 Kernel:", ubuntu_version)
 
@@ -44,25 +77,48 @@ print(" 🧠 vLLM version:", vllm.__version__)
 print("\n ⚡ Number of GPUs:", torch.cuda.device_count())
 
 if torch.cuda.device_count() > 0:
-    print(" ⚡ GPU Name:", torch.cuda.get_device_name(0))
+    for gpu_id in range(torch.cuda.device_count()):
+        print(f"\n ⚡ GPU {gpu_id} Name: {torch.cuda.get_device_name(gpu_id)}")
 
-    free_mem, total_mem = torch.cuda.mem_get_info(0)
+        free_mem, total_mem = torch.cuda.mem_get_info(gpu_id)
 
-    # Convert bytes → GB
-    free_mem_gb = free_mem / (1024**3)
-    total_mem_gb = total_mem / (1024**3)
+        free_mem_gb = free_mem / (1024**3)
+        total_mem_gb = total_mem / (1024**3)
 
-    print(f" 💾 GPU Memory Free: {free_mem_gb:.2f} GB")
-    print(f" 💾 GPU Memory Total: {total_mem_gb:.2f} GB")
+        print(f"   💾 Free Memory : {free_mem_gb:.2f} GB")
+        print(f"   💾 Total Memory: {total_mem_gb:.2f} GB")
+
+    pcie_info = get_gpu_pcie_info()
+
+    if isinstance(pcie_info, dict):
+        print(
+            f"\n 🔌 PCIe Link Width: x{pcie_info['current_width']} "
+            f"(max x{pcie_info['max_width']})"
+        )
+        print(
+            f" 🚀 PCIe Link Speed: {pcie_info['current_speed']} "
+            f"(max {pcie_info['max_speed']})"
+        )
+    else:
+        print(f" 🔌 PCIe Info: {pcie_info}")
+
 else:
     print("\n ⚡ GPU Name: No GPU detected")
 
 # Create two tensors and add them on the GPU
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+if torch.cuda.is_available():
 
-a = torch.rand(3, 3, device=device)
-b = torch.rand(3, 3, device=device)
-c = a + b
+    for gpu_id in range(torch.cuda.device_count()):
 
-print("\nTensor operation successful on:", device)
-print(c)
+        device = torch.device(f"cuda:{gpu_id}")
+
+        a = torch.rand(3, 3, device=device)
+        b = torch.rand(3, 3, device=device)
+        c = a + b
+
+        print(f"\n✅ Tensor operation successful on GPU {gpu_id}")
+        print(f"   Device: {torch.cuda.get_device_name(gpu_id)}")
+        print(c)
+
+else:
+    print("❌ No GPU detected")
