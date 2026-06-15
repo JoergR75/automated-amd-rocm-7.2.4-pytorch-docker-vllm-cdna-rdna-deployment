@@ -15,11 +15,17 @@ ubuntu_version = platform.release()
 # function for PCIe settings
 def get_gpu_pcie_info():
     try:
-        gpu_bdf = subprocess.check_output(
-            "lspci -D | egrep 'VGA|3D|Display' | head -1 | awk '{print $1}'",
-            shell=True,
+        output = subprocess.check_output(
+            ["lspci", "-D"],
             text=True
-        ).strip()
+        )
+
+        for line in output.splitlines():
+            if any(x in line for x in ["VGA", "3D", "Display"]):
+                gpu_bdf = line.split()[0]
+                break
+        else:
+            return "No GPU found"
 
         sysfs = f"/sys/bus/pci/devices/{gpu_bdf}"
 
