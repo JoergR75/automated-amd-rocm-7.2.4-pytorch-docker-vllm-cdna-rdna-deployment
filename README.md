@@ -272,7 +272,7 @@ running `test_vllm.py`
 python3 test_vllm.py
 ```
 
-<img width="1051" height="753" alt="image" src="https://github.com/user-attachments/assets/7030c74e-c4d8-437b-8bd9-2865a7b6d173" />
+<img width="1190" height="1708" alt="image" src="https://github.com/user-attachments/assets/ea43c788-b885-42c1-b70a-43128ab7e6c3" />
 
 If you need to add a specific GPU, you can use the **passthrough** option.  
 First, verify the available GPUs in the `/dev/dri` directory (host).
