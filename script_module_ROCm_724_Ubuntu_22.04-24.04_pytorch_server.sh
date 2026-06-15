@@ -439,7 +439,7 @@ if torch.cuda.is_available():
         b = torch.rand(3, 3, device=device)
         c = a + b
 
-        print(f"\n✅ Tensor operation successful on GPU {gpu_id}")
+        print(f"\n ✅ Tensor operation successful on GPU {gpu_id}")
         print(f"   Device: {torch.cuda.get_device_name(gpu_id)}")
         print(c)
 
@@ -494,7 +494,6 @@ print ' ✅ Finished AMD ROCm 7.2.4 stack + OCL + PyTorch 2.12 (Stable) + Transf
 printf "\n 🔹 After the reboot, test your installation with:\n"
 printf "  • rocminfo\n"
 printf "  • clinfo\n"
-printf "  • rocm-smi\n"
 printf "  • amd-smi\n"
 printf "  • rocm-bandwidth-tool\n"
 
