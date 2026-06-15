@@ -18,7 +18,7 @@ exec > >(tee -a "$LOGFILE") 2>&1
 #   - Ubuntu 24.04.4 LTS (Noble Numbat)
 #
 # Kernel Versions Tested (LTS server):
-#   - Ubuntu 22.04.5: 5.15.0-179
+#   - Ubuntu 22.04.5: 5.15.0-181
 #   - Ubuntu 24.04.4: 6.8.0-124
 #
 # Supported Hardware:
