@@ -13,43 +13,48 @@ ubuntu_pretty = subprocess.getoutput("lsb_release -ds")
 ubuntu_version = platform.release()
 
 # function for PCIe settings
-def get_gpu_pcie_info():
-    try:
-        output = subprocess.check_output(
-            ["lspci", "-D"],
-            text=True
-        )
+def get_all_gpu_pcie_info():
+    output = subprocess.check_output(["lspci", "-D"], text=True)
 
-        for line in output.splitlines():
-            if any(x in line for x in ["VGA", "3D", "Display"]):
-                gpu_bdf = line.split()[0]
-                break
-        else:
-            return "No GPU found"
+    gpu_bdfs = [
+        line.split()[0]
+        for line in output.splitlines()
+        if any(x in line for x in ["VGA", "3D", "Display"])
+    ]
 
-        sysfs = f"/sys/bus/pci/devices/{gpu_bdf}"
+    infos = []
 
-        with open(f"{sysfs}/current_link_width") as f:
-            current_width = f.read().strip()
+    for gpu_bdf in gpu_bdfs:
+        try:
+            sysfs = f"/sys/bus/pci/devices/{gpu_bdf}"
 
-        with open(f"{sysfs}/max_link_width") as f:
-            max_width = f.read().strip()
+            with open(f"{sysfs}/current_link_width") as f:
+                current_width = f.read().strip()
 
-        with open(f"{sysfs}/current_link_speed") as f:
-            current_speed = f.read().strip()
+            with open(f"{sysfs}/max_link_width") as f:
+                max_width = f.read().strip()
 
-        with open(f"{sysfs}/max_link_speed") as f:
-            max_speed = f.read().strip()
+            with open(f"{sysfs}/current_link_speed") as f:
+                current_speed = f.read().strip()
 
-        return {
-            "current_width": current_width,
-            "max_width": max_width,
-            "current_speed": current_speed,
-            "max_speed": max_speed
-        }
+            with open(f"{sysfs}/max_link_speed") as f:
+                max_speed = f.read().strip()
 
-    except Exception as e:
-        return f"Error getting PCIe info: {e}"
+            infos.append({
+                "bdf": gpu_bdf,
+                "current_width": current_width,
+                "max_width": max_width,
+                "current_speed": current_speed,
+                "max_speed": max_speed
+            })
+
+        except Exception as e:
+            infos.append({
+                "bdf": gpu_bdf,
+                "error": str(e)
+            })
+
+    return infos
 
 print("\n 🐧 Ubuntu:", ubuntu_pretty)
 print(" 🔢 Kernel:", ubuntu_version)
@@ -82,9 +87,12 @@ print(" 🤗 Transformers version:", transformers.__version__)
 # print(" 🧠 vLLM version:", vllm.__version__)
 print("\n ⚡ Number of GPUs:", torch.cuda.device_count())
 
+pcie_infos = get_all_gpu_pcie_info()
+
 if torch.cuda.device_count() > 0:
     for gpu_id in range(torch.cuda.device_count()):
-        print(f"\n ⚡ GPU {gpu_id} Name: {torch.cuda.get_device_name(gpu_id)}")
+
+        print(f"\n⚡ GPU {gpu_id} Name: {torch.cuda.get_device_name(gpu_id)}")
 
         free_mem, total_mem = torch.cuda.mem_get_info(gpu_id)
 
@@ -94,19 +102,23 @@ if torch.cuda.device_count() > 0:
         print(f"   💾 Free Memory : {free_mem_gb:.2f} GB")
         print(f"   💾 Total Memory: {total_mem_gb:.2f} GB")
 
-    pcie_info = get_gpu_pcie_info()
+        # Match PCIe info by index
+        if gpu_id < len(pcie_infos):
+            info = pcie_infos[gpu_id]
 
-    if isinstance(pcie_info, dict):
-        print(
-            f"\n 🔌 PCIe Link Width: x{pcie_info['current_width']} "
-            f"(max x{pcie_info['max_width']})"
-        )
-        print(
-            f" 🚀 PCIe Link Speed: {pcie_info['current_speed']} "
-            f"(max {pcie_info['max_speed']})"
-        )
-    else:
-        print(f" 🔌 PCIe Info: {pcie_info}")
+            if "error" in info:
+                print(f"   🔌 PCI Device : {info['bdf']}")
+                print(f"   ❌ PCIe Error : {info['error']}")
+            else:
+                print(f"   🔌 PCI Device : {info['bdf']}")
+                print(
+                    f"   🔌 PCIe Width : x{info['current_width']} "
+                    f"(max x{info['max_width']})"
+                )
+                print(
+                    f"   🚀 PCIe Speed : {info['current_speed']} "
+                    f"(max {info['max_speed']})"
+                )
 
 else:
     print("\n ⚡ GPU Name: No GPU detected")
