@@ -31,7 +31,7 @@ exec > >(tee -a "$LOGFILE") 2>&1
 # ROCm Driver Repo:      https://repo.radeon.com/amdgpu-install/7.2.4/ubuntu/
 #
 # PyTorch:               2.11+rocm7.2
-# Transformers:          5.9.0
+# Transformers:          5.10.2
 # Docker:                29.5.2 min. 29.5.0 (the script will verify and skip installation if minimum requirements are installed)
 #
 # INCLUDED TOOLS:
