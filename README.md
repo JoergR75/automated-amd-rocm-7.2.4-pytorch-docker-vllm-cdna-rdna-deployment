@@ -180,7 +180,7 @@ More details about the setup can be verified by
 cd /opt/rocm/bin && ./rocm_bandwidth_test plugin --run tb
 ```
 
-<img width="861" height="275" alt="{4103D9C7-2ECE-42CF-A231-DC1D7004C7BF}" src="https://github.com/user-attachments/assets/e0a1efaf-9c5c-4c6c-b2d9-8ff14cf1b623" />
+<img width="1830" height="507" alt="image" src="https://github.com/user-attachments/assets/26ee19ff-b6cd-433b-b9fc-e33d3fc757ee" />
 
 ⚠️ **Caution:**  
 Make sure **"Re-Size BAR"** is enabled in the **SBIOS**.  
