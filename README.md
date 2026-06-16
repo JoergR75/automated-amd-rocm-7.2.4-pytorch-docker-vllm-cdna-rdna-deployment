@@ -173,7 +173,7 @@ cd /opt/rocm/bin && ./rocm_bandwidth_test plugin --run tb p2p
 
 The tool prints results in a **matrix format** showing bandwidth (GB/s) between every device pair.
 
-<img width="983" height="1179" alt="{6EAC522F-550D-4881-9C78-11B3A90A555D}" src="https://github.com/user-attachments/assets/039f0f87-79b8-4dd0-856b-d959025b27a4" />
+<img width="1789" height="2116" alt="image" src="https://github.com/user-attachments/assets/61d38362-4efc-462c-b536-ed89f67184ad" />
 
 More details about the setup can be verified by
 ```bash
