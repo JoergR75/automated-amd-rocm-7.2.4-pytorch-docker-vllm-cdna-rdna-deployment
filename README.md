@@ -143,6 +143,13 @@ apt show rocm-libs -a
 
 <img width="2489" height="715" alt="image" src="https://github.com/user-attachments/assets/12e897a9-b00e-46bc-a0e1-6238848972dd" />
 
+or `amd-smi`
+```bash
+amd-smi
+```
+
+<img width="1797" height="689" alt="image" src="https://github.com/user-attachments/assets/50e666fb-24c1-4e46-93f0-e403f7bf777a" />
+
 ## 📶 ROCm Bandwidth Test
 
 **AMD’s ROCm Bandwidth Test utility** with the **`tb p2p` (Peer-to-peer device memory bandwidth test)** flag runs a complete set of bandwidth diagnostics.
